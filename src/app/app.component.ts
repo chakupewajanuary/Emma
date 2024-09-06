@@ -11,14 +11,18 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'Emma';
+  // title = 'Emma';
+  stepsList:any []=[
+    {stepName:"Basic Details",isCompleted:false},
+    {stepName:"Skills",isCompleted:false},
+    {stepName:"Experience",isCompleted:false}
+  ];
 
-  science=signal<any>('');
+  activeStep:any=this.stepsList[0];
 
-
-
-
-  constructor(){}
+  setActiveStep(activeStep:any){
+    this.activeStep=activeStep;
+  }
 
   ngOnInit(): void {
     

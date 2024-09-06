@@ -1,12 +1,183 @@
+<div class="progress-wrapper">
+  <div id="progress-bar-container">
+    <ul>
+      <li class="step step01" (click)="setActiveStep(step)" [ngClass]="step.stepName == activeStep.stepName?'active':''"
+        *ngFor="let step of stepsList">
+        <div class="step-inner">{{step.stepName}}</div>
+      </li>
+    </ul>
+    <div id="line">
+      <div id="line-progress"></div>
+    </div>
+    <!-- progress-bar-container -->
+    <div id="progress-content-section">
+      <div class="section-content step1 active" *ngIf="activeStep.stepName=='Basic Details'">
+        <!-- <h2>Step 1</h2> -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="">name</label>
+              <input type="text" placeholder="Enter Name" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="">email</label>
+              <input type="text" placeholder="Enter Email" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="">passward</label>
+              <input type="text" placeholder="Enter passward" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="">Designation</label>
+              <input type="text" placeholder="Enter Designation" class="form-control" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Contact</label>
+              <input type="text" placeholder="Enter Contact" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Alternative Contact No</label>
+              <input type="text" placeholder="Enter Alternative Contact No" class="form-control" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Personal Email Id</label>
+              <input type="text" placeholder="Enter Contact" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <label for="">Experience</label>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Total Year of Experience</label>
+              <input type="text" placeholder="Enter Total Year of Experience" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Total Month of Experience</label>
+              <input type="text" placeholder="Enter Total Month of Experience" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <label for="">Addresss</label>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">City:</label>
+              <input type="text" placeholder="Enter City" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">State</label>
+              <input type="text" placeholder="Enter State" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class=" form-group col-md-6">
+              <label for="">Address</label>
+              <textarea name="" id=""></textarea>
+            </div>
 
-  <div>
-    <label for="">name</label>
-    <input type="text"[(ngModel)]="science">
+          </div>
+          <div class="row">
+            <div class="row">
+              <label for="">Current Address</label>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Pincode</label>
+              <input type="text" placeholder="Enter Pincode" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Personal City</label>
+              <input type="text" placeholder="Enter Personal City" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="">Personal State</label>
+            <input type="text" placeholder="Enter Personal State" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="">Personal Pincode</label>
+            <input type="text" placeholder="Enter Personal Pincode" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="section-content step2 active" *ngIf="activeStep.stepName=='Skills'">
+        <!-- <h2>Step 2</h2> -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="">Skill Name</label>
+              <input type="text" placeholder="Enter Skill Name" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Total Experience</label>
+              <input type="text" placeholder="Enter Total Experience" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Last Version</label>
+              <input type="text" placeholder="Enter Last Version" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Action</label>
+              <div class="mt-2">
+                <input class="btn btn-primary" type="button" value="Save">
+                <input class="btn btn-danger ms-1" type="submit" value="Delete">
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <button type="button" class=" btn btn-primary w-100">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-content step3 active" *ngIf="activeStep.stepName=='Experience'">
+        <!-- <h2>Step 3</h2> -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="row tp-3">
+              <div class="col-6">
+                <h3>Experience</h3>
+              </div>
+              <div class="col-6 text-end">
+                <button class="btn btn-outline-success">Add New</button>
+              </div>
+
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">Company</label>
+              <input type="text" placeholder="Company" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">Start Date</label>
+              <input type="date" placeholder="" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">End Date</label>
+              <input type="date" placeholder="" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">Designation</label>
+              <input type="text" placeholder="Designation" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">Project</label>
+              <input type="text" placeholder="Project" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="">Action</label>
+              <div class="mt-2">
+                <input class="btn btn-primary" type="button" value="Save">
+                <input class="btn btn-danger ms-1" type="submit" value="Delete">
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-
-
-
-
-
-{{science()}}
+  <!-- progress-wrapper -->
+</div>
