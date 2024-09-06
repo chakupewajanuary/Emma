@@ -105,77 +105,98 @@
         </div>
       </div>
       <div class="section-content step2 active" *ngIf="activeStep.stepName=='Skills'">
-        <!-- <h2>Step 2</h2> -->
+        <h2>Step 2</h2>
         <div class="container-fluid">
-          <div class="row">
-            <div class="form-group col-md-3">
-              <label for="">Skill Name</label>
-              <input type="text" placeholder="Enter Skill Name" class="form-control">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="">Total Experience</label>
-              <input type="text" placeholder="Enter Total Experience" class="form-control">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="">Last Version</label>
-              <input type="text" placeholder="Enter Last Version" class="form-control">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="">Action</label>
-              <div class="mt-2">
-                <input class="btn btn-primary" type="button" value="Save">
-                <input class="btn btn-danger ms-1" type="submit" value="Delete">
-              </div>
-            </div>
-            <div class="form-group col-md-12">
-              <button type="button" class=" btn btn-primary w-100">Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section-content step3 active" *ngIf="activeStep.stepName=='Experience'">
-        <!-- <h2>Step 3</h2> -->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="row tp-3">
-              <div class="col-6">
-                <h3>Experience</h3>
-              </div>
-              <div class="col-6 text-end">
-                <button class="btn btn-outline-success">Add New</button>
-              </div>
+          <div class="form-group mt-2"id="tblskill">
+            <div class="container">
+              <h5>Add Skills</h5>
+              <div id="table-container">
+                <table class="tabel tabel-bordered">
+                  <thead>
+                    <tr>
+                      <th>Skill Name</th>
+                      <th>Total Experience</th>
+                      <th>Last Version</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="text" placeholder="skils" class="form-control">
+                      </td>
+                      <td>
+                        <input type="text" placeholder="Total Experience" class="form-control">
+                      </td>
+                      <td>
+                        <input type="date" placeholder="Last version" class="form-control">
+                      </td>
+                      <td>
+                        <div class="mt-2">
+                          <input class="btn btn-primary" type="button" value="Save">
+                          <input class="btn btn-danger ms-1" type="submit" value="Delete">
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">Company</label>
-              <input type="text" placeholder="Company" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">Start Date</label>
-              <input type="date" placeholder="" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">End Date</label>
-              <input type="date" placeholder="" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">Designation</label>
-              <input type="text" placeholder="Designation" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">Project</label>
-              <input type="text" placeholder="Project" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="">Action</label>
-              <div class="mt-2">
-                <input class="btn btn-primary" type="button" value="Save">
-                <input class="btn btn-danger ms-1" type="submit" value="Delete">
               </div>
             </div>
-            
           </div>
         </div>
+       
+      </div>
+      <div class="section-content step2 active" *ngIf="activeStep.stepName=='Experience'">
+        <h2>Step 3</h2>
+        <div class="container-fluid">
+          <div class="form-group mt-2"id="tblskill">
+            <div class="container">
+              <h5>Add Experience</h5>
+              <div id="table-container">
+                <table class="tabel tabel-bordered">
+                  <thead>
+                    <tr>
+                      <th>Company</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Disignation</th>
+                      <th>Project</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="text" placeholder="skils" class="form-control">
+                      </td>
+                      <td>
+                        <input type="date" placeholder="Total Experience" class="form-control">
+                      </td>
+                      <td>
+                        <input type="date" placeholder="Last version" class="form-control">
+                      </td>
+                      <td>
+                        <input type="text" placeholder="Designation" class="form-control">
+                      </td>
+                      <td>
+                        <input type="text" placeholder="project" class="form-control">
+                      </td>
+                      <td>
+                        <div class="mt-1">
+                          <input class="btn btn-primary" type="button" value="Save">
+                          <input class="btn btn-danger ms-1" type="submit" value="Delete">
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+       
       </div>
     </div>
   </div>
