@@ -1,18 +1,23 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+// import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule],
+  imports: [RouterOutlet, FormsModule, CommonModule,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
+[x: string]: any;
   // title = 'Emma';
-  stepsList: any[] = [
+  designationList:any [] = [];
+  roleList:any [] = [];
+    stepsList: any[] = [
     { stepName: 'Basic Details', isCompleted: false },
     { stepName: 'Skills', isCompleted: false },
     { stepName: 'Experience', isCompleted: false },
@@ -45,26 +50,85 @@ export class AppComponent implements OnInit {
     ErpEmployeeSkills: [],
     ErmEmpExperiences: [],
   };
-  ErpEmployeeSkills: any = {
-    "empSkillId": 0,
-    "empId": 0,
-    "skill": "string",
-    "totalYearExp": 0,
-    "lastVersionUsed": "string"
-  };
-  ErmEmpExperiences: any = {
-"empExpId": 0,
-      "empId": 0,
-      "companyName": "string",
-      "startDate": "2024-09-09T06:19:28.800Z",
-      "endDate": "2024-09-09T06:19:28.800Z",
-      "designation": "string",
-      "projectsWorkedOn": "string"
-  };
+  // ErpEmployeeSkills: any = {
+  //   "empSkillId": 0,
+  //   "empId": 0,
+  //   "skill": "string",
+  //   "totalYearExp": 0,
+  //   "lastVersionUsed": "string"
+  // };
+  // ErmEmpExperiences: any = {
+  //     "empExpId": 0,
+  //     "empId": 0,
+  //     "companyName": "string",
+  //     "startDate": "2024-09-09T06:19:28.800Z",
+  //     "endDate": "2024-09-09T06:19:28.800Z",
+  //     "designation": "string",
+  //     "projectsWorkedOn": "string"
+  // };
 
   setActiveStep(activeStep: any) {
     this.activeStep = activeStep;
   }
+  addSkills(){
+    const skillObj={
+      "empSkillId": 0,
+      "empId": 0,
+      "skill": "string",
+      "totalYearExp": 0,
+      "lastVersionUsed": "string"
+    };
+    console.log(skillObj);
+    this.employeeObj.ErpEmployeeSkills.unshift(skillObj);
+    console.log(this.employeeObj.ErpEmployeeSkills)
+  }
+  addExp(){
+    const expObj={
+        "empExpId": 0,
+        "empId": 0,
+        "companyName": "string",
+        "startDate": "2024-09-09T06:19:28.800Z",
+        "endDate": "2024-09-09T06:19:28.800Z",
+        "designation": "string",
+        "projectsWorkedOn": "string"
+    };
+    console.log(expObj);
+    this.employeeObj.ErmEmpExperiences.unshift(expObj);
+    console.log( this.employeeObj.ErmEmpExperiences);
+    // this.cdr.detectChanges();    
+  }
+  loadDesignations(){
+    this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation").subscribe((res:any)=>{
+      this.designationList=res.data;
+      console.log(this.designationList);
+    })
+  }
+  loadRoleId(){
+    this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllRoles").subscribe((res:any)=>{
+      this.roleList=res.data;
+      console.log(this.roleList);
+    })
+  }
+  gotoStep2(){
+    const currentStep=this.stepsList.find
+  }
 
-  ngOnInit(): void {}
+
+  saveEmployee(){
+    this.http.post("https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee",this.employeeObj).subscribe((res:any)=>{
+      if(res.result){
+        alert('Employee Create Success');
+      }
+      else{
+        alert('res.massage')
+      }
+    })
+  }
+
+  constructor(private http:HttpClient){}
+  ngOnInit(): void {
+    this.loadDesignations() ;
+    this.loadRoleId()
+  }
 }
+// private cdr: ChangeDetectorRef
