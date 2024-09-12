@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   // title = 'Emma';
   designationList:any [] = [];
   roleList:any [] = [];
+
     stepsList: any[] = [
     { stepName: 'Basic Details', isCompleted: false },
     { stepName: 'Skills', isCompleted: false },
@@ -25,29 +26,31 @@ export class AppComponent implements OnInit {
   ];
 
   activeStep: any = this.stepsList[0];
+    // value to store percentage for complition
+  stepperCompletionValue:number=8;
   //object
   employeeObj: any = {
-    "roleId": 0,
-    "userName": "",
-    "empCode": "",
-    "empId": 0,
-    "empName": "",
-    "empEmailId": "",
-    "empDesignationId": 0,
-    "empContactNo": "",
-    "empAltContactNo": "",
-    "empPersonalEmailId": "",
-    "empExpTotalYear": 0,
-    "empExpTotalMonth": 0,
-    "empCity": "",
-    "empState": "",
-    "empPinCode":"",
-    "empAddress": "",
-    "empPerCity": "",
-    "empPerState": "",
-    "empPerPinCode": "",
-    "empPerAddress": "",
-    "password": "",
+  "roleId": 0,
+  "userName": "string",
+  "empCode": "string",
+  "empId": 0,
+  "empName": "string",
+  "empEmailId": "string",
+  "empDesignationId": 0,
+  "empContactNo": "string",
+  "empAltContactNo": "string",
+  "empPersonalEmailId": "string",
+  "empExpTotalYear": 0,
+  "empExpTotalMonth": 0,
+  "empCity": "string",
+  "empState": "string",
+  "empPinCode": "string",
+  "empAddress": "string",
+  "empPerCity": "string",
+  "empPerState": "string",
+  "empPerPinCode": "string",
+  "empPerAddress": "string",
+  "password": "string",
     ErpEmployeeSkills: [],
     ErmEmpExperiences: [],
   };
@@ -101,21 +104,53 @@ export class AppComponent implements OnInit {
   loadDesignations(){
     this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation").subscribe((res:any)=>{
       this.designationList=res.data;
-      console.log(this.designationList);
+      // console.log(this.designationList);
     })
   }
   loadRoleId(){
     this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllRoles").subscribe((res:any)=>{
       this.roleList=res.data;
-      console.log(this.roleList);
+      // console.log(this.roleList);
     })
   }
   gotoStep2(){
-    const currentStep=this.stepsList.find
+    const currentStep=this.stepsList.find(m=>m.stepName==this.activeStep.stepName);
+    currentStep.isCompleted=true;
+    this.activeStep=this.stepsList[1];
+    this.stepperCompletionValue=50;
   }
+  gotoStep3(){
+    const currentStep=this.stepsList.find(m=>m.stepName==this.activeStep.stepName);
+    currentStep.isCompleted=true;
+    this.activeStep=this.stepsList[2];
+    this.stepperCompletionValue=100;
+   }
 
+  //  saveEmployee() {
+  //   debugger;
+  //   console.log(this.employeeObj);
+  
+  //   this.http.post("https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee", this.employeeObj)
+  //     .subscribe(
+  //       (res: any) => {
+  //         if (res.result) {
+  //           alert('Employee Create Success');
+  //         } else {
+  //           alert(res.message || 'An error occurred while creating the employee');
+  //         }
+  //       },
+  //       (error) => {
+  //         // Error handler to catch network issues or invalid requests
+  //         console.error('Error posting employee:', error);
+  //         alert('Failed to create employee. Please try again.');
+  //       }
+  //     );
+  // }
+  
 
-  saveEmployee(){
+ saveEmployee(){
+    debugger;
+    
     this.http.post("https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee",this.employeeObj).subscribe((res:any)=>{
       if(res.result){
         alert('Employee Create Success');
@@ -123,6 +158,7 @@ export class AppComponent implements OnInit {
       else{
         alert('res.massage')
       }
+      console.log('this is my employee OBJECT', this.employeeObj)
     })
   }
 
@@ -133,4 +169,4 @@ export class AppComponent implements OnInit {
   }
  
 }
-// private cdr: ChangeDetectorRef
+
