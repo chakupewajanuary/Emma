@@ -3,12 +3,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { KaribuComponent } from './components/karibu/karibu.component';
 // import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule,HttpClientModule],
+  imports: [RouterOutlet, FormsModule, CommonModule,HttpClientModule,KaribuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -130,5 +131,6 @@ export class AppComponent implements OnInit {
     this.loadDesignations() ;
     this.loadRoleId()
   }
+ 
 }
 // private cdr: ChangeDetectorRef
