@@ -18,7 +18,7 @@
             <div class="row">
               <div class="form-group col-md-4">
                 <label for="">Name:</label>
-                <input type="text" [(ngModel)]="employeeObj.empName" placeholder="Enter Name" class="form-control" />
+                <input type="text" [(ngModel)]="employeeObj.userName" placeholder="Enter Name" class="form-control" />
               </div>
               <div class="form-group col-md-4">
                 <label for="">Email:</label>
@@ -32,43 +32,42 @@
               </div>
             </div>
             <div class="row pb-3">
-              <div class="form-group text-start col-md-2">
+              <div class="form-group text-start col-md-3">
                 <label for="">Designation:</label>
-                <select class="form-select" name="" id="" [(ngModel)]="employeeObj.empDesignationId">
+                <select class="form-select" id="" [(ngModel)]="employeeObj.empDesignationId">
                   <option value="">Select Designation</option>
-                  @for (item of designationList; track $index) {
-                  <option value="item.designationId">{{item.designation}}</option>
-                  }
+                  <option *ngFor="let item of designationList" [value]="item.designationId">{{item.designation}}
+                  </option>
                 </select>
-
               </div>
-              <div class="form-group text-start col-md-2">
-                <label >Role:</label>
-                <select class="form-select"  [(ngModel)]="employeeObj.roleId">
+              <div class="form-group text-start col-md-3">
+                <label>Role:</label>
+                <select class="form-select" [(ngModel)]="employeeObj.roleId">
                   <option value="">Select Role</option>
-                  <option *ngFor="let item of roleList" value="item.roleId">{{item.role}}</option>
+                  <option *ngFor="let item of roleList" [value]="item.roleId">{{item.role}}</option>
                 </select>
 
               </div>
-         
-              <div class="form-group text-start col-md-2">
+
+              <div class="form-group text-start col-md-3">
                 <label for="">Contact No:</label>
                 <input type="text" [(ngModel)]="employeeObj.empContactNo" placeholder="Enter Contact"
                   class="form-control" />
               </div>
-              <div class="form-group text-start col-md-2">
+              <div class="form-group text-start col-md-3">
                 <label for="">Alternative Contact No:</label>
                 <input type="text" [(ngModel)]="employeeObj.empAltContactNo" placeholder="Enter Alternative Contact No"
                   class="form-control" required />
               </div>
-              <div class="form-group text-startol-md-3">
+              <div class="form-group text-start col-md-2">
                 <label for="">Personal Email Id:</label>
                 <input type="text" [(ngModel)]="employeeObj.empPersonalEmailId" placeholder="Enter Contact"
                   class="form-control" />
               </div>
-                          
+
             </div>
-           
+
+
             <div class="row">
               <h5>Experience</h5>
               <div class="form-group col-md-6">
@@ -136,6 +135,11 @@
               <div class="form-group col-md-6">
                 <label for="">Personal Address</label>
                 <input type="text" [(ngModel)]="employeeObj.empPerAddress" placeholder="Enter Personal Address"
+                  class="form-control" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for=""> Emp Name</label>
+                <input type="text" [(ngModel)]="employeeObj.empName" placeholder="Enter Personal Address"
                   class="form-control" />
               </div>
 
@@ -300,3 +304,5 @@
   </div>
   <!-- progress-wrapper -->
 </div>
+
+<app-karibu></app-karibu>
