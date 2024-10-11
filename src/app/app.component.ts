@@ -3,16 +3,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { KaribuComponent } from './components/karibu/karibu.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule,HttpClientModule,KaribuComponent],
+  imports: [RouterOutlet, FormsModule, CommonModule,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], // Fixed typo from "styleUrl" to "styleUrls"
 })
 export class AppComponent implements OnInit {
+  title = 'emma';
   designationList: any[] = [];
   roleList: any[] = [];
   stepsList: any[] = [
